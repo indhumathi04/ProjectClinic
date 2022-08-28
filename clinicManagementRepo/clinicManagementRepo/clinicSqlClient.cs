@@ -54,7 +54,21 @@ namespace clinicManagementRepo
             return 0;
 
         }
-
+        public static bool checkPatient(int id)
+        {
+            con = getcon();
+            cmd = new SqlCommand("select count(*) from patient where patientId = " + id );
+            cmd.Connection = con;
+            SqlDataReader dr = cmd.ExecuteReader();
+            if (dr.Read() && Convert.ToInt32(dr[0]) == 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
         public static List<doctor> getDoctorData()
         {
             con=getcon();
@@ -141,6 +155,7 @@ namespace clinicManagementRepo
                 appointment.doctorId = Convert.ToInt32(dr["doctorId"]);
                 appointment.visitDate = DateOnly.Parse(DateTime.Parse(dr["visitDate"].ToString()).ToString("dd/MM/yyyy"));
                 appointment.appointmentTime = TimeSpan.Parse(dr["appointmentTime"].ToString());
+                appointment.appointmentStatus = (string)dr["appointmentStatus"];
                 appointmentList.Add(appointment);
             }
             return appointmentList;
@@ -148,19 +163,12 @@ namespace clinicManagementRepo
 
         public static List<appointment> getExistingAppointmentDataForDoc(int docId, DateOnly visitDate)
         {
-            /*ateTime dt = visitDate.ToDateTime(TimeOnly.Parse("10:00 PM"));*/
-            //DateTime dt = DateTime.ParseExact(visitDate.ToString(), "dd/MM/yyyy", CultureInfo.InvariantCulture);
-            //Console.WriteLine(dt.ToString("yyyy/MM/dd"));
-            //String source = visitDate.ToString();
-            //String date = String.Join("-", source.Split('/').Reverse());
-            //Console.WriteLine(date);
             List<appointment> appointmentList = new List<appointment>();
             con = getcon();
             cmd = new SqlCommand("select * from appointments where doctorId = @doctorId and visitDate = @date and appointmentStatus=\'booked\'");
             cmd.Connection = con;
             cmd.Parameters.AddWithValue("@date", visitDate.ToString());
             cmd.Parameters.AddWithValue("@doctorId", docId);
-            //Console.WriteLine(dt.ToLongDateString());
             SqlDataReader dr = cmd.ExecuteReader();
             while (dr.Read())
             {

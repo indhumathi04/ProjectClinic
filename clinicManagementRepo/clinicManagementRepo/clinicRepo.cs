@@ -43,14 +43,14 @@ namespace clinicManagementRepo
             }
             else
             {
-                throw new Exception("No doctor details available");
+                throw new Exception("No doctor details available  ");
             }
             
         }
         public List<doctor> getDoctorDetailsOnSpecialization(string specialization)
         {
             List<doctor> docList = clinicSqlClient.getDoctorOnSpecialization(specialization);
-            if (docList.Count != 0)
+            if (docList.Count != 0 || docList== null)
             {
                 return docList;
             }
@@ -62,6 +62,7 @@ namespace clinicManagementRepo
         }
         public int bookAppointment(appointment appointment)
         {
+            List<appointment> appoint = clinicSqlClient.getAppointmentData(appointment.patientId, appointment.visitDate);
             int appointmentId = clinicSqlClient.addAppointmentData(appointment);
             if(appointmentId == 0)
             {
@@ -108,6 +109,17 @@ namespace clinicManagementRepo
         public List<string> getSpecialization()
         {
             return clinicSqlClient.getSpecialization();
+        }
+        public bool checkPatientExists(int id)
+        {
+            if (clinicSqlClient.checkPatient(id))
+            {
+                return true;
+            }
+            else
+            {
+                throw new Exception("Invalid Patient ID");
+            }
         }
     }
 }

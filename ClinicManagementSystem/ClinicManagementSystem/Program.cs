@@ -64,6 +64,7 @@ namespace clinicManagementSystem
 
         private static void cancelAppointment()
         {
+            Console.WriteLine("\n****************************** CANCEL APPOINTMENT ***********************************");
             Console.Write("Enter patient ID: ");
             int id = getID();
             Console.Write("Enter date of visit. (format: yyyy/mm/dd)");
@@ -82,6 +83,7 @@ namespace clinicManagementSystem
             Console.WriteLine("\n******************************* SCHEDULE APPOINTMENT *******************************");
             Console.Write("Enter patient ID :  ");
             int id = getID();
+            clinic.checkPatientExists(id);
             Console.WriteLine("\nChoose specialization from the following options");
             List<string> specialization = clinic.getSpecialization();
             for(int i = 0; i < specialization.Count; i++)
@@ -99,10 +101,12 @@ namespace clinicManagementSystem
             }
             Console.WriteLine("Enter doctor ID of the doctor chosen: ");
             int docId = getID();
+            doctor d = doc.Where(x => x.doctorId == docId).FirstOrDefault();
             Console.Write("Enter visit date (format: yyyy/mm/dd) :  ");
             DateOnly visitDate = DateOnly.Parse(Console.ReadLine());
-            doctor d = doc.Where(x => x.doctorId == docId).FirstOrDefault();
-            Console.WriteLine("\nAvailable slots : ");
+          
+            Console.WriteLine("\nAvailable slots :  ");
+
             List<TimeSpan> existingAppointmentsForDoc =  (from app in clinic.existingAppointmentForDoc(d.doctorId, visitDate) select app.appointmentTime).ToList();
             int slotNo = 0;
             for (TimeSpan i = d.visitStartTime; i < d.visitEndTime; i = i.Add(new TimeSpan(1,0,0)),slotNo++)
@@ -120,7 +124,7 @@ namespace clinicManagementSystem
             int slotChoice = getChoice(slotNo);
             appointment bookNewAppointment = new appointment(id,specializationChoice,d.doctorId,visitDate,d.visitStartTime.Add(new TimeSpan(slotChoice-1,0,0)),"booked");
             int appId= clinic.bookAppointment(bookNewAppointment);
-            Console.WriteLine("Your appointment ID  : " + appId);
+            Console.WriteLine("Your appointment ID  : " + appId +"\n");
         }
 
         static bool stafflogin()
@@ -134,6 +138,7 @@ namespace clinicManagementSystem
         }
         static string getName(string firstOrLast)
         {
+
             Console.Write("Enter the patient's "+firstOrLast);
             var name = Console.ReadLine();
             var regexItem = new Regex("^[a-zA-Z ]*$");
@@ -144,8 +149,9 @@ namespace clinicManagementSystem
             }
             else
             {
-                throw new Exception("Name should not contain symbols or numbers. Enter valid name");
+                throw new Exception("Name should not contain symbols or numbers. Enter valid name. ");
             }
+
         }
         static DateTime getDob()
         {
@@ -235,6 +241,11 @@ namespace clinicManagementSystem
         }
         static void viewDoctors()
         {
+            List<doctor> doc = clinic.getDoctorDetails();
+            foreach(doctor doctor in doc)
+            {
+                Console.WriteLine("Doctor ID:  " + doctor.doctorId+ ", Doctor's name: "+ doctor.firstName+" "+doctor.lastName +", Gender: "+doctor.gender + ", Specialization: "+ doctor.specialization +"\n" );
+            }
 
         }
     }
