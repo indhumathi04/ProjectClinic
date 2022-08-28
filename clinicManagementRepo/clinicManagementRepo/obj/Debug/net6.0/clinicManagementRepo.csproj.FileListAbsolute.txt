@@ -1,0 +1,12 @@
+C:\Users\Admin\Desktop\training\Basic Module Project\clinicManagementRepo\clinicManagementRepo\bin\Debug\net6.0\clinicManagementRepo.deps.json
+C:\Users\Admin\Desktop\training\Basic Module Project\clinicManagementRepo\clinicManagementRepo\bin\Debug\net6.0\clinicManagementRepo.dll
+C:\Users\Admin\Desktop\training\Basic Module Project\clinicManagementRepo\clinicManagementRepo\bin\Debug\net6.0\clinicManagementRepo.pdb
+C:\Users\Admin\Desktop\training\Basic Module Project\clinicManagementRepo\clinicManagementRepo\obj\Debug\net6.0\clinicManagementRepo.csproj.AssemblyReference.cache
+C:\Users\Admin\Desktop\training\Basic Module Project\clinicManagementRepo\clinicManagementRepo\obj\Debug\net6.0\clinicManagementRepo.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\Desktop\training\Basic Module Project\clinicManagementRepo\clinicManagementRepo\obj\Debug\net6.0\clinicManagementRepo.AssemblyInfoInputs.cache
+C:\Users\Admin\Desktop\training\Basic Module Project\clinicManagementRepo\clinicManagementRepo\obj\Debug\net6.0\clinicManagementRepo.AssemblyInfo.cs
+C:\Users\Admin\Desktop\training\Basic Module Project\clinicManagementRepo\clinicManagementRepo\obj\Debug\net6.0\clinicManagementRepo.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\training\Basic Module Project\clinicManagementRepo\clinicManagementRepo\obj\Debug\net6.0\clinicManagementRepo.dll
+C:\Users\Admin\Desktop\training\Basic Module Project\clinicManagementRepo\clinicManagementRepo\obj\Debug\net6.0\refint\clinicManagementRepo.dll
+C:\Users\Admin\Desktop\training\Basic Module Project\clinicManagementRepo\clinicManagementRepo\obj\Debug\net6.0\clinicManagementRepo.pdb
+C:\Users\Admin\Desktop\training\Basic Module Project\clinicManagementRepo\clinicManagementRepo\obj\Debug\net6.0\ref\clinicManagementRepo.dll
