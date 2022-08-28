@@ -14,6 +14,13 @@
     <PackageReference Include="NUnit3TestAdapter" Version="4.2.1" />
     <PackageReference Include="NUnit.Analyzers" Version="3.3.0" />
     <PackageReference Include="coverlet.collector" Version="3.1.2" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="clinicManagementRepo">
+      <HintPath>..\..\clinicManagementRepo\clinicManagementRepo\bin\Debug\net6.0\clinicManagementRepo.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

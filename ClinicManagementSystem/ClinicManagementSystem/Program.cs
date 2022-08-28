@@ -139,7 +139,7 @@ namespace clinicManagementSystem
         static string getName(string firstOrLast)
         {
 
-            Console.Write("Enter the patient's "+firstOrLast);
+            Console.Write("Enter the patient's "+firstOrLast+":  ");
             var name = Console.ReadLine();
             var regexItem = new Regex("^[a-zA-Z ]*$");
 
@@ -155,7 +155,7 @@ namespace clinicManagementSystem
         }
         static DateTime getDob()
         {
-            Console.Write("Enter the patient's Date of Birth");
+            Console.Write("Enter the patient's Date of Birth:  ");
             DateTime dob = DateTime.ParseExact(Console.ReadLine(), "dd/MM/yyyy", null);
             int res = DateTime.Compare(dob, DateTime.Now);
             int res1 = DateTime.Compare(DateTime.Now.AddYears(-120), dob);
@@ -171,7 +171,7 @@ namespace clinicManagementSystem
         }
         static string getGender()
         {
-            Console.Write("Enter the gender of the patient");
+            Console.Write("Enter the gender of the patient:  ");
             string gender = Console.ReadLine();
             if ( gender.ToLower() == "female"|| gender.ToLower()=="f")
             {
@@ -192,7 +192,7 @@ namespace clinicManagementSystem
         }
         static int getAge()
         {
-            Console.Write("Enter the age of patient");
+            Console.Write("Enter the age of patient:  ");
             int Age;
             bool isInt = int.TryParse(Console.ReadLine(),out Age);
             if (isInt)
